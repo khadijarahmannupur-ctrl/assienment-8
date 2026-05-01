@@ -15,7 +15,7 @@ import {
 } from "@heroui/react";
 import { toast } from "react-toastify";
 
-export default function SignUpPage() {
+export default function LogInPage() {
     const onSubmit = async (e) => {
         e.preventDefault();
 
@@ -25,10 +25,8 @@ export default function SignUpPage() {
         const password = e.target.password.value;
 
         const { data, error } = await authClient.signUp.email({
-            name,
             email,
             password,
-            image,
         });
 
         if (error) {
@@ -36,7 +34,7 @@ export default function SignUpPage() {
             return;
         }
 
-        toast.success("Account created successfully!");
+        toast.success("Login successfully!");
     };
 
     return (
@@ -65,35 +63,7 @@ export default function SignUpPage() {
                     className="mt-10 flex flex-col gap-5"
                     onSubmit={onSubmit}
                 >
-                    {/* NAME */}
-                    <TextField isRequired name="name" type="text">
-                        <Label className="text-[#5C4033]">Name</Label>
 
-                        <Input
-                            placeholder="Enter your name"
-                            classNames={{
-                                inputWrapper:
-                                    "bg-[#F8F4EE] border border-[#EADBC8] hover:border-[#8B5E3C]",
-                            }}
-                        />
-
-                        <FieldError />
-                    </TextField>
-
-                    {/* IMAGE */}
-                    <TextField isRequired name="image" type="text">
-                        <Label className="text-[#5C4033]">Photo URL</Label>
-
-                        <Input
-                            placeholder="Enter image url"
-                            classNames={{
-                                inputWrapper:
-                                    "bg-[#F8F4EE] border border-[#EADBC8] hover:border-[#8B5E3C]",
-                            }}
-                        />
-
-                        <FieldError />
-                    </TextField>
 
                     {/* EMAIL */}
                     <TextField
@@ -168,18 +138,18 @@ export default function SignUpPage() {
                         className="mt-4 h-12 w-full rounded-xl bg-[#8B5E3C] text-base font-medium text-white transition hover:bg-[#5C4033]"
                     >
                         <Check />
-                        Create Account
+                        Login
                     </Button>
                 </Form>
 
                 {/* LOGIN LINK */}
                 <p className="mt-8 text-center text-[#6B5B52]">
-                    Already have an account?{" "}
+                    Don't have an account?{" "}
                     <Link
-                        href="/login"
+                        href="/signup"
                         className="font-semibold text-[#8B5E3C] hover:underline"
                     >
-                        Login
+                        Signup
                     </Link>
                 </p>
 
