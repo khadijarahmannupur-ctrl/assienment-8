@@ -1,0 +1,122 @@
+[
+    {
+        "id": "tile_001",
+        "title": "Ceramic Blue Tile",
+        "description": "Premium ceramic tile with blue glaze finish",
+        "image": "https://images.unsplash.com/photo-1618221639244-cd0b1c3f8b3a",
+        "category": "ceramic",
+        "price": 45.99,
+        "currency": "USD",
+        "dimensions": "60x60 cm",
+        "material": "Ceramic",
+        "inStock": true
+    },
+    {
+        "id": "tile_002",
+        "title": "Marble White Luxury Tile",
+        "description": "Elegant white marble finish tile for luxury interiors",
+        "image": "https://images.unsplash.com/photo-1615873968403-89e068629265",
+        "category": "marble",
+        "price": 89.99,
+        "currency": "USD",
+        "dimensions": "80x80 cm",
+        "material": "Marble",
+        "inStock": true
+    },
+    {
+        "id": "tile_003",
+        "title": "Modern Grey Stone Tile",
+        "description": "Minimal grey stone texture tile",
+        "image": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
+        "category": "stone",
+        "price": 39.5,
+        "currency": "USD",
+        "dimensions": "60x60 cm",
+        "material": "Stone",
+        "inStock": true
+    },
+    {
+        "id": "tile_004",
+        "title": "Luxury Gold Pattern Tile",
+        "description": "Premium decorative gold pattern tile",
+        "image": "https://images.unsplash.com/photo-1616594039964-ae9021a400a0",
+        "category": "decor",
+        "price": 120.0,
+        "currency": "USD",
+        "dimensions": "60x120 cm",
+        "material": "Ceramic",
+        "inStock": true
+    },
+    {
+        "id": "tile_005",
+        "title": "Wood Texture Tile",
+        "description": "Natural wood style ceramic tile",
+        "image": "https://images.unsplash.com/photo-1615873968403-89e068629265",
+        "category": "wood",
+        "price": 55.0,
+        "currency": "USD",
+        "dimensions": "60x60 cm",
+        "material": "Ceramic",
+        "inStock": true
+    },
+    {
+        "id": "tile_006",
+        "title": "Black Matte Tile",
+        "description": "Modern matte black interior tile",
+        "image": "https://images.unsplash.com/photo-1615873968403-89e068629265",
+        "category": "modern",
+        "price": 70.0,
+        "currency": "USD",
+        "dimensions": "60x60 cm",
+        "material": "Porcelain",
+        "inStock": true
+    },
+    {
+        "id": "tile_007",
+        "title": "Classic Beige Tile",
+        "description": "Soft beige classic home tile",
+        "image": "https://images.unsplash.com/photo-1618221639244-cd0b1c3f8b3a",
+        "category": "classic",
+        "price": 40.0,
+        "currency": "USD",
+        "dimensions": "50x50 cm",
+        "material": "Ceramic",
+        "inStock": true
+    },
+    {
+        "id": "tile_008",
+        "title": "Luxury Diamond Tile",
+        "description": "High-end diamond pattern tile",
+        "image": "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+        "category": "luxury",
+        "price": 150.0,
+        "currency": "USD",
+        "dimensions": "80x80 cm",
+        "material": "Marble",
+        "inStock": true
+    },
+    {
+        "id": "tile_009",
+        "title": "Minimal White Tile",
+        "description": "Clean minimal white tile design",
+        "image": "https://images.unsplash.com/photo-1615873968403-89e068629265",
+        "category": "minimal",
+        "price": 35.0,
+        "currency": "USD",
+        "dimensions": "60x60 cm",
+        "material": "Ceramic",
+        "inStock": true
+    },
+    {
+        "id": "tile_010",
+        "title": "Textured Grey Marble Tile",
+        "description": "Stone textured grey marble tile",
+        "image": "https://images.unsplash.com/photo-1600566752227-8f8f6c1b2c3d",
+        "category": "marble",
+        "price": 95.0,
+        "currency": "USD",
+        "dimensions": "80x80 cm",
+        "material": "Marble",
+        "inStock": true
+    }
+]
