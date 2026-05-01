@@ -14,8 +14,10 @@ import {
     TextField,
 } from "@heroui/react";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
+    const router = useRouter();
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -38,6 +40,7 @@ export default function SignUpPage() {
         }
 
         toast.success("Account created successfully!");
+        router.push("/");
     };
 
     const handleGoogleSignUp = async () => {

@@ -20,16 +20,13 @@ export default function SignUpPage() {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const name = e.target.name.value;
-        const image = e.target.image.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
 
         const { data, error } = await authClient.signUp.email({
-            name,
             email,
             password,
-            image,
+            callbackURL: '/'
         });
 
         if (error) {
@@ -40,16 +37,6 @@ export default function SignUpPage() {
         toast.success("Account created successfully!");
     };
 
-    // GOOGLE LOGIN
-    const handleGoogleLogin = async () => {
-        const { error } = await authClient.signIn.social({
-            provider: "google",
-        });
-
-        if (error) {
-            toast.error(error.message);
-        }
-    };
     const handleGoogleLogIn = async () => {
         const data = await authClient.signIn.social({
             provider: "google",
