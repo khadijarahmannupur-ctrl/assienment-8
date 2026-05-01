@@ -12,12 +12,12 @@ export default function Navbar() {
 
   // 🔥 Temporary auth state
   // পরে BetterAuth connect করলে replace করে দিবা
-  const user = true;
+  const user = false;
 
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "All Tiles", href: "/all-tiles" },
-    { name: "My Profile", href: "/my-profile" },
+    { name: "My Profile", href: "/myProfile" },
   ];
 
   return (
@@ -73,7 +73,7 @@ export default function Navbar() {
             </Link>
           ) : (
             <>
-              <Link href="/my-profile">
+              <Link href="/myProfile">
                 <Image 
                   src="https://i.ibb.co/4pDNDk1/avatar.png"
                   alt="user"
@@ -132,7 +132,7 @@ export default function Navbar() {
             ) : (
               <div className="space-y-4">
                 <Link
-                  href="/my-profile"
+                  href="/myProfile"
                   className="flex items-center gap-3"
                 >
                   <Image
