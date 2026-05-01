@@ -15,16 +15,21 @@ import {
 } from "@heroui/react";
 import { toast } from "react-toastify";
 
-export default function LogInPage() {
+export default function SignUpPage() {
+
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        const name = e.target.name.value;
+        const image = e.target.image.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
 
         const { data, error } = await authClient.signUp.email({
+            name,
             email,
             password,
+            image,
         });
 
         if (error) {
@@ -32,36 +37,47 @@ export default function LogInPage() {
             return;
         }
 
-        toast.success("Login successfully!");
+        toast.success("Account created successfully!");
     };
 
+    // GOOGLE LOGIN
+    const handleGoogleLogin = async () => {
+        const { error } = await authClient.signIn.social({
+            provider: "google",
+        });
+
+        if (error) {
+            toast.error(error.message);
+        }
+    };
+    const handleGoogleLogIn = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    }
+
     return (
-        <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#F8F4EE] px-6 py-16">
+        <section className="relative flex min-h-screen items-center justify-center bg-[#F8F4EE] px-6 py-16">
 
             {/* BACKGROUND BLUR */}
             <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-[#D4A373]/20 blur-3xl"></div>
-
             <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-[#8B5E3C]/10 blur-3xl"></div>
 
+            {/* CARD */}
             <Card className="relative z-10 w-full max-w-xl rounded-3xl border border-[#EADBC8] bg-white/90 p-8 shadow-2xl backdrop-blur-md">
 
                 {/* TITLE */}
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-[#5C4033]">
-                        Create Account
+                        Login Your Account
                     </h1>
-
                     <p className="mt-3 text-[#6B5B52]">
-                        Join our premium tile gallery community
+                        Join premium tile gallery community
                     </p>
                 </div>
 
                 {/* FORM */}
-                <Form
-                    className="mt-10 flex flex-col gap-5"
-                    onSubmit={onSubmit}
-                >
-
+                <Form onSubmit={onSubmit} className="mt-10 flex flex-col gap-5">
 
                     {/* EMAIL */}
                     <TextField
@@ -69,71 +85,48 @@ export default function LogInPage() {
                         name="email"
                         type="email"
                         validate={(value) => {
-                            if (
-                                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)
-                            ) {
-                                return "Please enter a valid email";
+                            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                                return "Please enter valid email";
                             }
-
                             return null;
                         }}
                     >
                         <Label className="text-[#5C4033]">Email</Label>
-
                         <Input
                             placeholder="john@example.com"
-                            classNames={{
-                                inputWrapper:
-                                    "bg-[#F8F4EE] border border-[#EADBC8] hover:border-[#8B5E3C]",
-                            }}
+                            className="border border-[#EADBC8] bg-[#F8F4EE]"
                         />
-
                         <FieldError />
                     </TextField>
 
                     {/* PASSWORD */}
                     <TextField
                         isRequired
-                        minLength={8}
                         name="password"
                         type="password"
+                        minLength={8}
                         validate={(value) => {
-                            if (value.length < 8) {
-                                return "Password must be at least 8 characters";
-                            }
-
-                            if (!/[A-Z]/.test(value)) {
-                                return "Password needs one uppercase letter";
-                            }
-
-                            if (!/[0-9]/.test(value)) {
-                                return "Password needs one number";
-                            }
-
+                            if (value.length < 8) return "Min 8 characters";
+                            if (!/[A-Z]/.test(value)) return "Need uppercase letter";
+                            if (!/[0-9]/.test(value)) return "Need number";
                             return null;
                         }}
                     >
                         <Label className="text-[#5C4033]">Password</Label>
-
                         <Input
-                            placeholder="Enter your password"
-                            classNames={{
-                                inputWrapper:
-                                    "bg-[#F8F4EE] border border-[#EADBC8] hover:border-[#8B5E3C]",
-                            }}
+                            placeholder="Enter password"
+                            className="border border-[#EADBC8] bg-[#F8F4EE]"
                         />
-
                         <Description className="text-[#8C7B75]">
-                            Minimum 8 characters with uppercase & number
+                            8+ chars with uppercase & number
                         </Description>
-
                         <FieldError />
                     </TextField>
 
-                    {/* BUTTON */}
+                    {/* SUBMIT BUTTON */}
                     <Button
                         type="submit"
-                        className="mt-4 h-12 w-full rounded-xl bg-[#8B5E3C] text-base font-medium text-white transition hover:bg-[#5C4033]"
+                        className="mt-4 h-12 w-full rounded-xl bg-[#8B5E3C] text-base font-medium text-white hover:bg-[#5C4033]"
                     >
                         <Check />
                         Login
@@ -143,10 +136,7 @@ export default function LogInPage() {
                 {/* LOGIN LINK */}
                 <p className="mt-8 text-center text-[#6B5B52]">
                     Don't have an account?{" "}
-                    <Link
-                        href="/signup"
-                        className="font-semibold text-[#8B5E3C] hover:underline"
-                    >
+                    <Link href="/signup" className="font-semibold text-[#8B5E3C] hover:underline">
                         Signup
                     </Link>
                 </p>
@@ -154,21 +144,18 @@ export default function LogInPage() {
                 {/* DIVIDER */}
                 <div className="my-8 flex items-center gap-4">
                     <div className="h-px flex-1 bg-[#EADBC8]"></div>
-
-                    <span className="text-sm text-[#8C7B75]">
-                        OR CONTINUE WITH
-                    </span>
-
+                    <span className="text-sm text-[#8C7B75]">OR</span>
                     <div className="h-px flex-1 bg-[#EADBC8]"></div>
                 </div>
 
                 {/* GOOGLE BUTTON */}
                 <Button
-                    variant="bordered"
-                    className="h-12 w-full rounded-xl border-[#D4A373] text-[#5C4033] hover:bg-[#F8F4EE]"
+                    onClick={handleGoogleLogIn}
+                    className="h-12 w-full rounded-xl border border-[#D4A373] bg-white text-[#5C4033] hover:bg-[#F8F4EE]"
                 >
                     Continue with Google
                 </Button>
+
             </Card>
         </section>
     );
