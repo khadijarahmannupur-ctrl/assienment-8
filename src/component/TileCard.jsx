@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function TileCard({ tile }) {
     return (
-        <div className="rounded-xl border bg-white shadow-md transition hover:shadow-xl">
+        <div className="rounded-xl border border-[#8B5E3C] bg-white shadow-md transition hover:shadow-xl">
             <Image
                 width={200}
                 height={200}
