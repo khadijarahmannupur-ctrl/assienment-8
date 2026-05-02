@@ -100,7 +100,7 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 Clone the project:
 
 ```bash
-https://github.com/khadijarahmannupur-ctrl/assienment-8/edit/main
+https://github.com/khadijarahmannupur-ctrl/assienment-8
 ```
 
 Go to the project directory:
