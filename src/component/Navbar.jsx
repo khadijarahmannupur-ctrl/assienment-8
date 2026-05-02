@@ -3,16 +3,21 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { use, useState } from "react";
 import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
 
 export default function Navbar() {
+  const userData = authClient.useSession();
+  const user = userData.data?.user;
+  console.log(user);
+  
+  const handleSignOut = async()=>{
+     await authClient.signOut();
+  }   
+
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-
-  // 🔥 Temporary auth state
-  // পরে BetterAuth connect করলে replace করে দিবা
-  const user = false;
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -75,15 +80,16 @@ export default function Navbar() {
             <>
               <Link href="/myProfile">
                 <Image 
-                  src="https://i.ibb.co/4pDNDk1/avatar.png"
-                  alt="user"
+                  src={user?.image}
+                  alt={user?.name[0]}
+                  referrerPolicy="no-referrer"
                   width={400}
                     height={400}
                   className="h-11 w-11 rounded-full border-2 border-[#8B5E3C] object-cover"
                 />
               </Link>
 
-              <button className="rounded-xl border border-[#8B5E3C] px-5 py-2 text-sm font-medium text-[#5C4033] transition-all duration-300 hover:bg-[#8B5E3C] hover:text-white">
+              <button onClick={handleSignOut} className="rounded-xl border border-[#8B5E3C] px-5 py-2 text-sm font-medium text-[#5C4033] transition-all duration-300 hover:bg-[#8B5E3C] hover:text-white">
                 Logout
               </button>
             </>

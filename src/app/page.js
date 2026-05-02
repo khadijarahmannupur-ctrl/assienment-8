@@ -3,6 +3,7 @@ import TileCard from '@/component/TileCard';
 import WhyChooseUs from '@/component/WhyChooseUs';
 import tiles from "@/lib/tiles.json";
 import Features from '@/component/Features';
+import Marquee from '@/component/Marquee';
 
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
 
   return (
     <>
+    <Marquee></Marquee>
      <Banner></Banner>
       <div className="px-6">
         <h1 className="my-6 text-3xl font-bold text-[#8B5E3C]">
