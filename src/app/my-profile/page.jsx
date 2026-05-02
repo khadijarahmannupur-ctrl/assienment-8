@@ -17,7 +17,7 @@ export default function MyProfilePage() {
         );
     }
     const user = data?.user;
-    console.log(user);
+    // console.log(user);
 
     return (
         <section className="min-h-screen bg-[#F8F4EE] px-6 py-16">

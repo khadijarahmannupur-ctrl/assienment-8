@@ -22,13 +22,13 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "All Tiles", href: "/all-tiles" },
-    { name: "My Profile", href: "/myProfile" },
+    { name: "My Profile", href: "/my-profile" },
   ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#d9c7b8] bg-[#F8F4EE]/90 backdrop-blur-md">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-8">
-        {/* LOGO */}
+        
         <Link href="/" className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#8B5E3C] shadow-md">
             <span className="text-lg font-bold text-white">T</span>
@@ -44,7 +44,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* DESKTOP MENU */}
+        
         <nav className="hidden items-center gap-10 md:flex">
           {navLinks.map((link) => (
             <Link
@@ -65,7 +65,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* RIGHT SIDE */}
+        
         <div className="hidden items-center gap-4 md:flex">
           {!user ? (
             <Link
@@ -76,7 +76,7 @@ export default function Navbar() {
             </Link>
           ) : (
             <>
-              <Link href="/myProfile">
+              <Link href="/my-profile">
                 <Image
                   src={user?.image}
                   alt={user?.name[0]}
@@ -94,7 +94,7 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* MOBILE BUTTON */}
+        
         <button
           onClick={() => setOpen(!open)}
           className="rounded-lg border border-[#d9c7b8] p-2 text-[#5C4033] md:hidden"
@@ -103,7 +103,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* MOBILE MENU */}
+      
       <div
         className={`overflow-hidden bg-[#F8F4EE] transition-all duration-300 md:hidden ${open ? "max-h-[400px] border-t border-[#d9c7b8]" : "max-h-0"
           }`}
@@ -134,7 +134,7 @@ export default function Navbar() {
             ) : (
               <div className="space-y-4">
                 <Link
-                  href="/myProfile"
+                  href="/my-profile"
                   className="flex items-center gap-3"
                 >
                   <Image
