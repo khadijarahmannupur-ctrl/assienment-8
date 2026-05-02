@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+// import Banner from '/images/banner1.jpg'
 
 export default function HeroSection() {
     return (
@@ -87,7 +88,7 @@ export default function HeroSection() {
                         <Image
                             width={650}
                             height={650}
-                            src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop"
+                            src="/images/banner2.jpg"
                             alt="Luxury Interior"
                             className="h-[650px] w-full object-cover"
                         />

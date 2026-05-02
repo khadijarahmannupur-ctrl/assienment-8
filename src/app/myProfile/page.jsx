@@ -22,10 +22,10 @@ export default function MyProfilePage() {
     return (
         <section className="min-h-screen bg-[#F8F4EE] px-6 py-16">
 
-            {/* CONTAINER */}
+            
             <div className="mx-auto max-w-5xl">
 
-                {/* PAGE TITLE */}
+                
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-[#5C4033]">
                         My Profile
@@ -36,15 +36,15 @@ export default function MyProfilePage() {
                     </p>
                 </div>
 
-                {/* PROFILE CARD */}
+                
                 <Card className="mt-12 overflow-hidden rounded-3xl border border-[#EADBC8] bg-white shadow-2xl">
 
-                    {/* TOP BANNER */}
+                   
                     <div className="h-40 bg-gradient-to-r from-[#8B5E3C] to-[#D4A373]" />
 
                     <div className="relative px-8 pb-10 pt-0">
 
-                        {/* PROFILE IMAGE */}
+                        
                         <div className="-mt-16 flex justify-center">
                             <div className="overflow-hidden rounded-full border-4 border-white shadow-xl">
 
@@ -56,12 +56,13 @@ export default function MyProfilePage() {
                                     alt={user?.name || "User"}
                                     width={120}
                                     height={120}
+                                    referrerPolicy="no-referrer"
                                 />
 
                             </div>
                         </div>
 
-                        {/* USER INFO */}
+                        
                         <div className="mt-6 text-center">
 
                             <h2 className="text-3xl font-bold text-[#5C4033]">
@@ -74,7 +75,7 @@ export default function MyProfilePage() {
 
                         </div>
 
-                        {/* INFO BOXES */}
+                        
                         <div className="mt-10 grid gap-6 md:grid-cols-3">
 
                             <div className="rounded-2xl bg-[#F8F4EE] p-6 text-center">
@@ -115,7 +116,6 @@ export default function MyProfilePage() {
 
                         </div>
 
-                        {/* ACTION BUTTON */}
                         <div className="mt-10 flex justify-center">
 
                             <Link href="/updateProfile">

@@ -12,7 +12,6 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
-import { toast } from "react-toastify";
 
 export default function UpdateProfilePage() {
     const { data, isPending } = authClient.useSession();
@@ -44,7 +43,7 @@ export default function UpdateProfilePage() {
 
             <div className="mx-auto max-w-3xl">
 
-                {/* TITLE */}
+               
                 <div className="text-center">
 
                     <h1 className="text-4xl font-bold text-[#5C4033]">
@@ -57,10 +56,10 @@ export default function UpdateProfilePage() {
 
                 </div>
 
-                {/* CARD */}
+                
                 <Card className="mt-12 rounded-3xl border border-[#EADBC8] bg-white p-8 shadow-2xl">
 
-                    {/* PROFILE IMAGE */}
+                   
                     <div className="flex flex-col items-center">
 
                         <div className="overflow-hidden rounded-full border-4 border-[#EADBC8] shadow-lg">
@@ -73,6 +72,7 @@ export default function UpdateProfilePage() {
                                 alt={user?.name || "User"}
                                 width={120}
                                 height={120}
+                                referrerPolicy="no-referrer"
                             />
 
                         </div>
