@@ -15,36 +15,29 @@ import {
 import { toast } from "react-toastify";
 
 export default function UpdateProfilePage() {
+    const { data, isPending } = authClient.useSession();
 
-    const user = {
-        name: "Nupur Rahman",
-        image:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-    };
-
-    const handleUpdate = async (e) => {
+    if (isPending) {
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-[#F8F4EE]">
+                <div className="h-16 w-16 animate-spin rounded-full border-4 border-[#D4A373]/30 border-t-[#8B5E3C]"></div>
+            </div>
+        );
+    }
+    const user = data?.user;
+    // console.log(user);
+    const onSubmit = async (e) => {
         e.preventDefault();
 
         const name = e.target.name.value;
         const image = e.target.image.value;
+        console.log({ name, image })
 
-        try {
-            const { data, error } = await authClient.updateUser({
-                name,
-                image,
-            });
-
-            if (error) {
-                toast.error(error.message);
-                return;
-            }
-
-            toast.success("Profile updated successfully!");
-
-        } catch (err) {
-            toast.error("Something went wrong");
-        }
-    };
+        await authClient.updateUser({
+            name,
+            image,
+        })
+    }
 
     return (
         <section className="min-h-screen bg-[#F8F4EE] px-6 py-16">
@@ -73,36 +66,37 @@ export default function UpdateProfilePage() {
                         <div className="overflow-hidden rounded-full border-4 border-[#EADBC8] shadow-lg">
 
                             <Image
-                                src={user.image}
-                                alt={user.name}
+                                src={
+                                    user?.image ||
+                                    "https://cdn-icons-png.flaticon.com/512/219/219969.png"
+                                }
+                                alt={user?.name || "User"}
                                 width={120}
                                 height={120}
-                                className="h-[120px] w-[120px] object-cover"
                             />
 
                         </div>
 
                         <h2 className="mt-4 text-2xl font-semibold text-[#5C4033]">
-                            {user.name}
+                            {user?.name}
                         </h2>
 
                     </div>
 
                     {/* FORM */}
                     <Form
-                        onSubmit={handleUpdate}
+                        onSubmit={onSubmit}
                         className="mt-10 flex flex-col gap-6"
                     >
 
                         {/* NAME */}
-                        <TextField isRequired name="name" type="text">
+                        <TextField defaultValue={user?.name} isRequired name="name" type="text">
 
                             <Label className="text-[#5C4033]">
                                 Full Name
                             </Label>
 
                             <Input
-                                defaultValue={user.name}
                                 placeholder="Enter your name"
                                 className="border border-[#EADBC8] bg-[#F8F4EE]"
                             />
@@ -112,14 +106,13 @@ export default function UpdateProfilePage() {
                         </TextField>
 
                         {/* IMAGE */}
-                        <TextField isRequired name="image" type="text">
+                        <TextField defaultValue={user?.image} isRequired name="image" type="text">
 
                             <Label className="text-[#5C4033]">
                                 Profile Image URL
                             </Label>
 
                             <Input
-                                defaultValue={user.image}
                                 placeholder="Enter image url"
                                 className="border border-[#EADBC8] bg-[#F8F4EE]"
                             />

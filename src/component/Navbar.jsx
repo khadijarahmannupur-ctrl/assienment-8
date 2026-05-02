@@ -11,10 +11,10 @@ export default function Navbar() {
   const userData = authClient.useSession();
   const user = userData.data?.user;
   console.log(user);
-  
-  const handleSignOut = async()=>{
-     await authClient.signOut();
-  }   
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+  }
 
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -50,18 +50,16 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`relative text-[15px] font-medium transition-all duration-300 ${
-                pathname === link.href
+              className={`relative text-[15px] font-medium transition-all duration-300 ${pathname === link.href
                   ? "text-[#8B5E3C]"
                   : "text-[#2D2D2D]"
-              }`}
+                }`}
             >
               {link.name}
 
               <span
-                className={`absolute -bottom-2 left-0 h-[2px] bg-[#8B5E3C] transition-all duration-300 ${
-                  pathname === link.href ? "w-full" : "w-0"
-                }`}
+                className={`absolute -bottom-2 left-0 h-[2px] bg-[#8B5E3C] transition-all duration-300 ${pathname === link.href ? "w-full" : "w-0"
+                  }`}
               ></span>
             </Link>
           ))}
@@ -79,12 +77,12 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/myProfile">
-                <Image 
+                <Image
                   src={user?.image}
                   alt={user?.name[0]}
                   referrerPolicy="no-referrer"
                   width={400}
-                    height={400}
+                  height={400}
                   className="h-11 w-11 rounded-full border-2 border-[#8B5E3C] object-cover"
                 />
               </Link>
@@ -107,9 +105,8 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <div
-        className={`overflow-hidden bg-[#F8F4EE] transition-all duration-300 md:hidden ${
-          open ? "max-h-[400px] border-t border-[#d9c7b8]" : "max-h-0"
-        }`}
+        className={`overflow-hidden bg-[#F8F4EE] transition-all duration-300 md:hidden ${open ? "max-h-[400px] border-t border-[#d9c7b8]" : "max-h-0"
+          }`}
       >
         <div className="space-y-5 px-6 py-6">
           {navLinks.map((link) => (
@@ -117,11 +114,10 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className={`block text-base font-medium ${
-                pathname === link.href
+              className={`block text-base font-medium ${pathname === link.href
                   ? "text-[#8B5E3C]"
                   : "text-[#2D2D2D]"
-              }`}
+                }`}
             >
               {link.name}
             </Link>
@@ -142,11 +138,12 @@ export default function Navbar() {
                   className="flex items-center gap-3"
                 >
                   <Image
-                    src="https://i.ibb.co/4pDNDk1/avatar.png"
-                    alt="user"
+                    src={user?.image}
+                    alt={user?.name[0]}
+                    referrerPolicy="no-referrer"
                     width={400}
                     height={400}
-                    className="h-10 w-10 rounded-full border-2 border-[#8B5E3C]"
+                    className="h-11 w-11 rounded-full border-2 border-[#8B5E3C] object-cover"
                   />
 
                   <span className="font-medium text-[#5C4033]">
@@ -154,7 +151,7 @@ export default function Navbar() {
                   </span>
                 </Link>
 
-                <button className="w-full rounded-xl border border-[#8B5E3C] px-5 py-3 text-[#5C4033] transition-all duration-300 hover:bg-[#8B5E3C] hover:text-white">
+                <button onClick={handleSignOut} className="w-full rounded-xl border border-[#8B5E3C] px-5 py-3 text-[#5C4033] transition-all duration-300 hover:bg-[#8B5E3C] hover:text-white">
                   Logout
                 </button>
               </div>

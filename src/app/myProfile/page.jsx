@@ -3,16 +3,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button, Card } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 export default function MyProfilePage() {
 
-    // DEMO USER DATA
-    const user = {
-        name: "Nupur Rahman",
-        email: "nupur@example.com",
-        image:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
-    };
+    const { data, isPending } = authClient.useSession();
+
+    if (isPending) {
+        return (
+            <div className="flex min-h-screen items-center justify-center bg-[#F8F4EE]">
+                <div className="h-16 w-16 animate-spin rounded-full border-4 border-[#D4A373]/30 border-t-[#8B5E3C]"></div>
+            </div>
+        );
+    }
+    const user = data?.user;
+    console.log(user);
 
     return (
         <section className="min-h-screen bg-[#F8F4EE] px-6 py-16">
@@ -44,11 +49,13 @@ export default function MyProfilePage() {
                             <div className="overflow-hidden rounded-full border-4 border-white shadow-xl">
 
                                 <Image
-                                    src={user.image}
-                                    alt={user.name}
-                                    width={130}
-                                    height={130}
-                                    className="h-[130px] w-[130px] object-cover"
+                                    src={
+                                        user?.image ||
+                                        "https://cdn-icons-png.flaticon.com/512/219/219969.png"
+                                    }
+                                    alt={user?.name || "User"}
+                                    width={120}
+                                    height={120}
                                 />
 
                             </div>
@@ -58,11 +65,11 @@ export default function MyProfilePage() {
                         <div className="mt-6 text-center">
 
                             <h2 className="text-3xl font-bold text-[#5C4033]">
-                                {user.name}
+                                {user?.name}
                             </h2>
 
                             <p className="mt-2 text-[#6B5B52]">
-                                {user.email}
+                                {user?.email}
                             </p>
 
                         </div>
